@@ -1,7 +1,7 @@
 .register{
     margin-top: 3%;
     padding: 3%;
-    background: -webkit-linear-gradient(left, #083287,#0d51db);
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 .register-left{
     text-align: center;
@@ -63,7 +63,7 @@
 .register .nav-tabs{
     margin-top: 3%;
     border: none;
-    background: #0d51db;
+    background: #0062cc;
     border-radius: 1.5rem;
     width: 28%;
     float: right;
@@ -80,8 +80,8 @@
     border: none;
 }
 .register .nav-tabs .nav-link.active{
-    color: #0d51db;
-    border: 2px solid #0d51db;
+    color: #0062cc;
+    border: 2px solid #0062cc;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
