@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
-export class SignupComponent{
+export class SignupComponent {
 
   active_page = 'student'
   signupForm : FormGroup
