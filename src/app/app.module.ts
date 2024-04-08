@@ -11,6 +11,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { QuizzPageComponent } from './quizz-page/quizz-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { LoginComponent } from './login/login.component';
     SignupComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    StudentHomeComponent,
+    QuizzPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +32,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxBootstrapIconsModule,
+    MatSidenavModule,
     ToastrModule.forRoot({
       timeOut: 3000, // 15 seconds
       closeButton: true,
