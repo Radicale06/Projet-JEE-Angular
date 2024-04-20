@@ -1,0 +1,60 @@
+
+.choices{
+    padding: 5px;
+    margin-left: 50px;
+}
+.rm-question{
+    margin-left: 87%;
+}
+.add-choice-btn, .dropdown-btn{
+    
+    background-color: #0000;
+    color: #461A42;
+    border-color: #461A42;
+}
+.dropdown-btn:hover, .add-choice-btn{
+    background-color: #461A42;
+    color: white;
+}
+.add-question-btn{
+    border-radius: 0px;
+    border-bottom: 2px solid #461A42;
+}
+.add-question-btn:hover{
+    background-color: #461A42;
+    color: white;
+}
+.checkbox{
+    flex: 10%;
+    width: 8%;
+}
+.choiceText{
+    flex: 90%;
+    width: 90%;
+}
+.rm-choice-btn i{
+    padding: 5px;
+    color: red;
+}
+.rm-choice-btn{
+    background-color: #0000;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+.rm-choice-btn:hover, .rm-choice-btn i:hover{
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.sub-div{
+    display: flex;
+}
+.form-control{
+    background-color: #0000;
+    color: #461A42;
+    border-color: #461A42;
+}
+.form-label{
+    color: #461A42;
+}

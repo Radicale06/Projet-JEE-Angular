@@ -1,9 +1,28 @@
-<div class="m-auto col container0">
+<!--<div *ngIf="! isCheating" class="m-auto col plain-screen">
     <span class="loader m-auto"></span>
-    <h3 class="m-auto">Waiting for teacher to start the quizz</h3>
-    <label class="top-right">do not change the tab</label>
-    <label class="top-left">do not change the tab</label>
-    <label class="bottom-right">do not change the tab</label>
-    <label class="bottom-left">do not change the tab</label>
-    
+    <h2 class="msg m-auto">Waiting for teacher to start the quizz</h2>
+    <label class="top-right">do not exist the full screen mode during the quizz</label>
+    <label class="top-left">do not exist the full screen mode during the quizz</label>
+    <label class="bottom-right">do not exist the full screen mode during the quizz</label>
+    <label class="bottom-left">do not exist the full screen mode during the quizz</label>
+</div>
+<div *ngIf="isCheating" class="m-auto col plain-screens">
+    <h1 class="msg m-auto" style="color: red;">Rawa7 nayyek</h1>
+    <img src="../assets/hadj.png" class="m-auto" width="200px" height="200px"/>
+</div> -->
+<div>
+    <h4 class="question m-5">{{questions[currentQuestionIndex].text}}</h4>
+    <div *ngFor="let choice of questions[currentQuestionIndex].choices;let choiceIndex=index;" class="choices m-5 col-md-6">
+        <div  [className]="this.questions[this.selectedPage].choices[choiceIndex].className" (mouseenter)="changeClass(choiceIndex,'hovered')" (mouseleave)="changeClass(choiceIndex,'normal')" (click)="changeClass(choiceIndex,'selected')">
+            <button class="choiceIndex">{{choiceIndex+1}}</button>
+            <h5 class="choice">{{choice.choice}}</h5>
+        </div>
+    </div>
+    <div class="bottom-menu" style="margin-top: 13%;">
+        <button [disabled]="selectedPage == 0" class="btn  previous" (click)="changePage(selectedPage-1)">< previous</button>
+        <div class="pages">
+            <button *ngFor="let _ of questions;let page=index;" [ngClass]="selectedPage == page ? 'menuIndexSelected m-1':'menuIndex m-1'" (click)="changePage(page)">{{page+1}}</button>
+        </div>
+        <button [disabled]="selectedPage == questions.length-1" class="btn  next" (click)="changePage(selectedPage+1)">next ></button>
+    </div>
 </div>

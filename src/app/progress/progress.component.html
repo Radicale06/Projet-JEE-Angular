@@ -1,0 +1,20 @@
+<div class="d-flex flex-column">
+    <div class="d-flex flex-row mt-2 header">
+        <h4 class="">student</h4>
+        <h4 class="m-auto">progress</h4>
+        <h4 class="">rank</h4>
+
+    </div>
+    <div class="d-flex flex-row mt-5 m-4" *ngFor="let i of kk;let m = index;">
+        <h4 class="username">Kmaili</h4>
+        <div class="ml-5">
+            <input disabled *ngFor="let _ of bb;let i=index;" class="case" [style]="(progress==i+1)?style_actual:(progress>=i+1)?style_answered:style_not_entered" />
+            <br/>
+            <img src="../assets/letter.png" width="50" height="50" [style]="icon_style"/>
+        </div>
+        <button class="rank shadow ml-3" disabled>12</button>
+    </div>
+
+    <button (click)="incProgress()">click</button>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="container-fluid h-100 mt-1">
+    <div class="row flex-nowrap  h-100">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sideMenu  d-flex flex-column">
+            <div class="d-flex flex-column justify-content-center  px-3 pt-2 text-white overflow-visible">
+                <button class="new-quizz mb-5" (click)="displayNewQuizz()">
+                    New quizz
+                </button>
+                
+                    <button class="btn dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Clone existing quizz<i class="bi bi-caret-down-fill ml-3"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li *ngFor="let quizz of list_finished_quizzes" ><a class="dropdown-item">{{quizz.title}}</a></li>
+                    </ul>
+                <label class="created-quizz-title">
+                    Ready quizzes
+                </label>
+                <div style="overflow-y: visible;">
+                    <button *ngFor="let quizz of list_recent_quizzes" (click)="displayQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'created-quizz'">
+                        {{quizz.title}}
+                    </button>
+                </div>
+                    
+                <label class="created-quizz-title">
+                    Finished quizzes
+                </label>
+                <div style="overflow-y: visible;">
+                    <button *ngFor="let quizz of list_finished_quizzes" (click)="displayQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'created-quizz'">
+                        {{quizz.title}}
+                    </button>
+                </div>
+            </div>
+        </div>
+            <div class="col">
+                <router-outlet></router-outlet>
+            </div>
+            
+            
+    </div>
+</div>

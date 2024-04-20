@@ -1,10 +1,10 @@
-.container0{
+.plain-screen{
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-items: center;
     height: 100%;
-    border: 5px dotted black;
+    border: 5px dashed white;
 }
 .loader {
     width: 250px;
@@ -56,4 +56,74 @@ label{
 }
 .bottom-left{
     bottom: 0;left: 0;
+}
+.msg{
+  color: rgb(122, 224, 255);
+}
+.question{
+  text-align: center;
+  color: #461A42;
+  border: 2px dashed #461A42;
+  padding: 10px;
+  border-radius: 50px 50px 50px 50px;
+}
+.choiceIndex, .menuIndex{
+  font-size: 150%;
+  color: #461A42;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px dashed #461A42;
+  background-color: #0000;
+}
+.menuIndex, .menuIndexSelected{
+  font-size: 100%;
+  color: #461A42;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0000;
+  outline: none;
+}
+.menuIndexSelected{
+  border: 3px solid #461A42;
+  background-color: #0000;
+}
+.choice{
+  font-size: 20px;
+  color: #461A42;
+  padding: 20px;
+  border: 2px dashed #461A42;
+  border-radius: 50px 50px 50px 50px;
+  margin-left: 4%;
+}
+.normal, .selected, .hovered{
+  display: flex;
+  margin-top: 20px;
+}
+
+.hovered button, .hovered h5{
+  background-color: #c520f3ba;
+  color: #461A42;
+  cursor: pointer;
+}
+.selected button, .selected h5{
+  background-color: #461A42;
+  color: white;
+  cursor: pointer;
+}
+.bottom-menu{
+  display: flex;
+  width: 95%;
+  margin: auto;
+}
+.previous, .next{
+  flex: 10%;
+  background-color: #461A42;
+  color: white;
+}
+.pages{
+  display: flex;
+  justify-content: center;
+  flex: 80%;
 }

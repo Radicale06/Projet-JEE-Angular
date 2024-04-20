@@ -1,0 +1,46 @@
+<div class="container mt-2">
+
+    <h4 class="mt-3">Quizz Informations</h4>
+    <div class=" row p-3">
+        <div class="col-md-6">
+            <div class="title mt-2">
+                <label class="form-label">title</label>
+                <p class="form-control">{{quizz?.title}}</p>
+            </div>
+            <div class="token mt-2">
+                <label class="form-label">token</label>
+                <p class="form-control">{{quizz?.token}}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="duration mt-2">
+                <label class="form-label">duration (minutes)</label>
+                <p class="form-control">{{quizz?.duration}}</p>
+            </div>
+            <div class="maxParticipations mt-2">
+                <label class="form-label">max participations</label>
+                <p class="form-control">{{quizz?.maxParticipations}}</p>
+            </div>
+        </div>
+    </div>
+    <h4 class="mt-3">Questions</h4>
+    <div class=" row p-3 mt-2">
+        <div *ngFor="let question of questions let questionIndex = index;" class="col-xl-12">
+            <div class="mt-3">
+                <label class="form-label">question</label>
+                <p class="form-control">{{question.text}}</p>
+                <div class="choices mt-3 card ">
+                    <label class="form-label">choices</label>
+                    <div *ngFor="let choice of question.choices let choiceIndex = index;" class="d-flex mt-2">
+                        <div class="d-flex w-100">
+                            <p class="form-control choiceText">{{choice.text}}</p>
+                            <i [ngClass]="choice.isCorrect ? 'bi bi-check':'bi bi-x'" [ngStyle]="{'font-size': '3rem','color':choice.isCorrect?'green':'red'}"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

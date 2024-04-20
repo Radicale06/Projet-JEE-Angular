@@ -1,10 +1,31 @@
 .nav-btn{
     padding: 1em;
     font-size: 100%;
+    margin: 2px;
+    color: #461A42;
+    background-color: white;
+}
+.nav-btn:hover{
+    outline: 2px solid white;
+    background-color: #0000;
+    color: white;
 }
 .title{
     margin-top: 2%;
-    color: white;
     font-family: Georgia, serif;
     font-size: medium;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.navbar{
+    background-color: #461A42;
+}
+.userBtn{
+    border: 1px solid white;
+    color: white;
+}
+.userBtn:hover{
+    background-color: white;
+    color: #461A42;
 }

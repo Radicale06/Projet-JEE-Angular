@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { router } from 'ngx-bootstrap-icons';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +14,7 @@ export class LoginComponent {
 
   active_page = 'student'
   signupForm : FormGroup
-  constructor(private http: HttpClient,private toastr:ToastrService){
+  constructor(private http: HttpClient,private toastr:ToastrService,private router:Router, private authService:AuthServiceService){
     this.signupForm = new FormGroup({
       username: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required])
@@ -26,13 +29,16 @@ export class LoginComponent {
       return
     }
     let userData = this.signupForm.value
-    console.log(this.signupForm.value)
     let endpointUrl = 'http://localhost:8080' + (this.active_page == "student" ? "/etudiants":"/professeurs") + "/connect" 
     
     this.http.post(endpointUrl, userData).subscribe(
-    response => {
-      console.log('API response:', response);
-      this.toastr.success("Login successfully")  
+    (response: any) => {
+      console.log('API response login:', response);
+      this.toastr.success("Login successfully")
+      localStorage.setItem('userID',response.id)
+      localStorage.setItem('token',response.token)
+      this.authService.fetchCredentials(response.userID)
+      this.router.navigate(['/student']);
     },
     error => {
       console.error('Error:', );

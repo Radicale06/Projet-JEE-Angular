@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { list } from 'ngx-bootstrap-icons';
 import { ToastrService } from 'ngx-toastr';
+import { Quizz } from '../models/quizz';
 
 @Component({
   selector: 'app-student-home',
@@ -12,15 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 export class StudentHomeComponent {
 
   token: FormControl
-  quizzData ={
-    'quizz_title':String,
-    'teacher_name':String,
-    'duration':String,
-    'questions_count':String,
-    'max_participations':String
-  }
-  joinedQuizzes : String[] = ["spark ecosystem (hadj taieb)", "java (ben aouicha)", "NoSQL (Ghazi)", "Hadoop MapReduce (Montassar)"]
+  quizzData? : Quizz 
   token_presents = false
+  joinedQuizzes: String[] = [];
   constructor(private http:HttpClient,private toastr:ToastrService){
     this.token = new FormControl('')
   }
@@ -35,14 +30,8 @@ export class StudentHomeComponent {
         (response: any) => {
           this.token_presents = true
           this.token.reset()
-          this.quizzData = {
-            'quizz_title':response.quizzTitle,
-            'teacher_name':response.teacherName,
-            'duration':response.duration,
-            'questions_count':response.questionsCount,
-            'max_participations':response.maxParticipations
-          }
-          this.joinedQuizzes.push(this.quizzData.quizz_title+` (${this.quizzData.teacher_name})`)
+          this.quizzData = response
+          this.joinedQuizzes.push(this.quizzData!.title)
           console.log(response)
           this.toastr.success("joined")
         },

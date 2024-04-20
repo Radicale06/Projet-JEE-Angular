@@ -1,0 +1,25 @@
+
+.actualModified{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #461a4259
+}
+.correct-label{
+    font-size: xx-large;
+}
+.checkbox{
+    flex: 10%;
+    width: 8%;
+}
+.choiceText{
+    flex: 90%;
+    width: 90%;
+}
+.rm-choice-btn i{
+    padding: 5px;
+    color: red;
+}
+.rm-choice-btn{
+    background-color: #0000;
+    border: 1px solid red;
+    border-radius: 50%;
+}

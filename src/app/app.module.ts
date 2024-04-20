@@ -14,6 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { QuizzPageComponent } from './quizz-page/quizz-page.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { TeacherHomeComponent } from './teacher-home/teacher-home.component';
+import { ProgressComponent } from './progress/progress.component';
+import { PrestartQuizzComponent } from './prestart-quizz/prestart-quizz.component';
+import { CreatedQuizzComponent } from './created-quizz/created-quizz.component';
+import { ModifiableQuizzComponent } from './modifiable-quizz/modifiable-quizz.component';
+import { ModifiableQuestionComponent } from './modifiable-question/modifiable-question.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,14 @@ import { QuizzPageComponent } from './quizz-page/quizz-page.component';
     FooterComponent,
     LoginComponent,
     StudentHomeComponent,
-    QuizzPageComponent
+    QuizzPageComponent,
+    QuestionsComponent,
+    TeacherHomeComponent,
+    ProgressComponent,
+    PrestartQuizzComponent,
+    CreatedQuizzComponent,
+    ModifiableQuizzComponent,
+    ModifiableQuestionComponent,
   ],
   imports: [
     BrowserModule,

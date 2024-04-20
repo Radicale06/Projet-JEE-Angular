@@ -2,3 +2,9 @@
     display: flex;
     justify-content: space-evenly;
 }
+footer{
+    background-color: #461A42;
+}
+*{
+    color: white;
+}

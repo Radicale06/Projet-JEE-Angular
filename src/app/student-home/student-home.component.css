@@ -1,5 +1,19 @@
+.sideMenu{
+    background-color: #461A42;
+}
 .btn{
     float: right;
+    background-color: #461A42;
+    color: white;
+    border: none;
+}
+.form-label{
+    color: #461A42;
+}
+.form-control{
+    background-color: #0000;
+    border-color: #461A42;
+    color: #461A42;
 }
 .container{
     height: 100%;
@@ -13,16 +27,17 @@
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: #ffffff00;
+    background-color: #0000;
     border: 1px solid white;
     margin-top: 5%;
 }
 .joined-quizz:hover{
     background-color: white;
-    color: black;
+    color: #461A42;
     cursor: pointer;
 }
 .joined-quizz-title{
+    color: white;
     text-decoration: underline;
     font-size: 150%;
     display: flex;

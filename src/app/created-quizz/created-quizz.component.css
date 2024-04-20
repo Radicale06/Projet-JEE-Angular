@@ -1,0 +1,23 @@
+
+.choices{
+    padding: 5px;
+    margin-left: 50px;
+}
+.checkbox{
+    flex: 10%;
+    width: 8%;
+}
+.choiceText{
+    flex: 90%;
+    width: 90%;
+}
+.form-control{
+    background-color: #0000;
+    color: #461A42;
+    border-color: #461A42;
+    align-content: center;
+}
+.form-label{
+    color: #461A42;
+    font-weight: bold;
+}

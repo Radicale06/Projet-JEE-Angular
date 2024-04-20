@@ -4,7 +4,8 @@
     width: 90%;
     padding: 3%;
     background: white;
-    box-shadow: 0 0 50px #ccc;
+    border-radius: 25px;
+    border: 2px solid #461A42;
 }
 .register-left{
     text-align: center;
@@ -24,10 +25,9 @@
     cursor: pointer;
 }
 .register-right{
-    background: #ffffff;
+    background: #461A42;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
-    border: 1px solid #00c6ff;
 }
 .register-left img{
     margin: auto;
@@ -55,27 +55,43 @@
 .registerBtn{
     float: right;
     border: none;
+    outline: none;
     padding: 2%;
-    background: #00c6ff;
-    border: 2px solid white;
-    color: white;
+    background: white;
+    color: #461A42;
     font-weight: 600;
     width: 50%;
 }
 
-.register .nav-tabs{
+.nav-tabs{
     margin-top: 3%;
     border: none;
-    background: #00c6ff;
+    background: white;
     border-radius: 1.5rem;
     width: 28%;
     float: right;
+}
+.nav-tabs:hover
+input, .dropdown-toggle{
+    background-color: #0000;
+    border-color: white;
+    color: gray;
+}
+.dropdown-menu{
+    background-color: #0000;
+    border: 1px solid white;
+}
+.dropdown-item:hover{
+    background-color: white;
+}
+input:focus{
+    background-color: #0000;
 }
 .register .nav-tabs .nav-link{
     padding: 2%;
     height: 34px;
     font-weight: 600;
-    color: #fff;
+    color: #461A42;
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
 }
@@ -83,8 +99,9 @@
     border: none;
 }
 .register .nav-tabs .nav-link.active{
-    color: #00c6ff;
-    border: 2px solid #00c6ff;
+    color: white;
+    border: 2px solid white;
+    background-color: #461A42;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
@@ -92,7 +109,7 @@
     text-align: center;
     margin-top: 8%;
     margin-bottom: -15%;
-    color: #00c6ff;
+    color: white;
 }
 .gender.male:hover{
     background-color: blue;
@@ -101,5 +118,13 @@
     background-color: rgb(255, 3, 179);
 }
 .form-control{
-    color: gray;
+    color: white;
+    background-color: #0000;
+}
+.form-control::placeholder{
+    color: white;
+}
+img{
+    width: 80%;
+    height: 100%;
 }

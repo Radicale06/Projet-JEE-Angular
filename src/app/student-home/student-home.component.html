@@ -1,6 +1,6 @@
-<div class="container-fluid h-100 mt-2">
+<div class="container-fluid h-100 mt-1">
     <div class="row flex-nowrap  h-100">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary min-vh-100 d-flex flex-column">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sideMenu min-vh-100 d-flex flex-column">
             <div class="d-flex flex-column justify-content-center  px-3 pt-2 text-white">
                 <label class="joined-quizz-title">
                     Joined Quizzes
@@ -18,18 +18,18 @@
                     <input class="btn btn-primary mt-1" type="submit" value="search"/>
                 </form>
             </div>
-                <div *ngIf="token_presents" class="m-5" style="height: 1px;background-color: black;"></div>
+                <div *ngIf="token_presents" class="m-5" style="height: 1px;background-color: white;"></div>
                 <div class="p-5 mt-3 align-items-center justify-content-center" *ngIf="token_presents">
                     <h3 class=" mb-5 text-center">Quizz Informations</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Quizz Name</label>
-                                <input type="text" class="form-control" [placeholder]="quizzData.quizz_title" readonly />
+                                <input type="text" class="form-control" [placeholder]="quizzData?.title" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Number of Questions</label>
-                                <input type="number" class="form-control" [placeholder]="quizzData.questions_count" readonly/>
+                                <input type="number" class="form-control" [placeholder]="quizzData?.questions?.length" readonly/>
                             </div>
                             <div class="form-group">
                                 <label>Creation Date</label>
@@ -39,15 +39,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Teacher</label>
-                                <input type="text" class="form-control" [placeholder]="quizzData.teacher_name" readonly/>
+                                <input type="text" class="form-control" placeholder="-------------" readonly/>
                             </div>
                             <div class="form-group">
                                 <label>Duration</label>
-                                <input type="number" class="form-control" [placeholder]="quizzData.duration" readonly/>                            
+                                <input type="number" class="form-control" [placeholder]="quizzData?.duration" readonly/>                            
                             </div>
                             <div class="form-group">
                                 <label>Max Participations</label>
-                                <input type="number" class="form-control" [placeholder]="quizzData.max_participations" readonly/>                            
+                                <input type="number" class="form-control" [placeholder]="quizzData?.maxParticipations" readonly/>                            
                             </div>
                             
                             <button class="btn btn-danger ml-3">
@@ -56,7 +56,7 @@
                                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                   </svg>
                             </button>
-                            <input type="button" class="btn btn-primary registerBtn" value="Take the quizz" />
+                            <input type="button" class="btn" value="Take the quizz" />
                         </div>
                     </div>
                 </div>
