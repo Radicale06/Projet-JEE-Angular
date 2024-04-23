@@ -5,9 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { QuizzPageComponent } from './quizz-page/quizz-page.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { TeacherHomeComponent } from './teacher-home/teacher-home.component';
-import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentQuizzComponent } from './student-quizz/student-quizz.component';
 import { CreatedQuizzComponent } from './created-quizz/created-quizz.component';
 import { ModifiableQuizzComponent } from './modifiable-quizz/modifiable-quizz.component';
+import { ProgressComponent } from './progress/progress.component';
+import { FinishedAttemptComponent } from './finished-attempt/finished-attempt.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -15,11 +18,15 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'teacher',component:TeacherHomeComponent, children: [
     {path: '', component: QuestionsComponent},
-    {path: 'created_quizz', component: CreatedQuizzComponent, data: {queryParams : 'quizz'}},
-    {path: 'modifiable_quizz', component: ModifiableQuizzComponent, data: {queryParams : 'quizz'}}
+    {path: 'finished_quizz/:id', component: CreatedQuizzComponent},
+    {path: 'modifiable_quizz/:id', component: ModifiableQuizzComponent},
+    {path: 'progress/:id', component: ProgressComponent}
   ]},
-  {path:'student',component:StudentHomeComponent},
-  {path:'quizz',component:QuizzPageComponent},];
+  {path:'student',component:StudentDashboardComponent, children:[
+    {path: '', component: StudentQuizzComponent},
+    {path: 'finished', component: FinishedAttemptComponent}
+  ]},
+  {path:'quizz/:id/:duration',component:QuizzPageComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

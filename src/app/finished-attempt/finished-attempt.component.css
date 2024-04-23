@@ -1,0 +1,18 @@
+.score-area{
+    height: 400px;
+    width: 400px;
+    background-color: #461A42;
+    border-radius: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+    display: flex;
+}
+.rank-area{
+    height: 300px;
+    width: 300px;
+    background-color: green;
+    border-radius: 50%;
+    margin-top: -5%;
+    margin-left: 50%;
+    display: flex;
+}

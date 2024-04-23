@@ -33,7 +33,7 @@ export class ModifiableQuestionComponent implements OnInit{
       this.cancel()
   }
   cancel(){
-    this.questionChanged.emit({'action':'cancel'});
+    this.questionChanged.emit({'action':'cancel','question':this.question});
   }
   remove(){
     console.log('rrrrr: ',this.question?.id);

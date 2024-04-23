@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div [ngClass]="openedToJoin?'disabled container mt-2':'container mt-2'">
 
     <h4 class="mt-3">Quizz Informations</h4>
     <div class=" row p-3">
@@ -19,7 +19,7 @@
             </div>
             <div class="maxParticipations mt-2">
                 <label class="form-label">max participations</label>
-                <p class="form-control">{{quizz?.maxParticipations}}</p>
+                <p class="form-control">{{quizz!.maxParticipations}}</p>
             </div>
         </div>
     </div>
@@ -50,9 +50,16 @@
                 <app-modifiable-question [question]="question" (questionChanged)="onReceiveAction($event)" ></app-modifiable-question>
             </ng-template>
         </div>
-        <button class="btn m-auto validateBtn mt-5">
-            Open for participation
-        </button>
-        <app-prestart-quizz></app-prestart-quizz>
+        <div>
+            <button (click)="addQuestion()" class="btn addQuestion" *ngIf="modifyingIndex == -1">
+                Add question <i class="bi bi-plus-lg"></i>
+            </button>
+            <button class="btn validateBtn" (click)="openToJoin()">
+                Open for participation
+            </button>
+        </div>
     </div>
+</div>
+<div *ngIf="openedToJoin">
+    <app-prestart-quizz [quizz]="quizz"></app-prestart-quizz>
 </div>

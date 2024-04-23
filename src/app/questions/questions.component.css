@@ -4,26 +4,28 @@
     margin-left: 50px;
 }
 .rm-question{
-    margin-left: 87%;
+    float: right;
 }
-.add-choice-btn, .dropdown-btn{
+.add-choice-btn{
     
     background-color: #0000;
     color: #461A42;
     border-color: #461A42;
+    width: 40px;
+
+}
+.dropdown-btn{
+    border: 2px solid #461A42;
 }
 .dropdown-btn:hover, .add-choice-btn{
     background-color: #461A42;
     color: white;
 }
 .add-question-btn{
-    border-radius: 0px;
-    border-bottom: 2px solid #461A42;
-}
-.add-question-btn:hover{
     background-color: #461A42;
     color: white;
 }
+
 .checkbox{
     flex: 10%;
     width: 8%;

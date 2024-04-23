@@ -1,41 +1,47 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Student } from './models/student';
+import { Teacher } from './models/teacher';
+import { Utilisateur } from './models/utilisateur';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  username : string
-  id : string
-  classe : string
-  etablissement : string
-  constructor(private http:HttpClient) {
-    this.username = this.id = this.classe = this.etablissement = ""
-   }
-  isLogedIn(): boolean{
-    return localStorage.getItem('token') != null;
-  }
-  getUsername(): string{
-      return this.username;
-  }
+  private _user? : Utilisateur
+  logedIn : boolean = false
+
+  constructor(private http:HttpClient) {   }
 
 
-  fetchCredentials(etudiantId: number) {
-    const rememberMeToken = localStorage.getItem('token');
-    if (rememberMeToken) {
-        const headers = new HttpHeaders().set('rememberMeToken', rememberMeToken);
-        this.http.get(`http://localhost:8080/etudiants/credentials/1`, { headers }).subscribe(
-          (response:any) => {
-            this.username = response.username
-            this.id = response.id
-            this.classe = response.classe
-            console.log(response); 
-          },
-          error => {
-            console.log(error); 
-          }
-        );
+  
+
+  get isUserExists(): boolean{
+    let user = localStorage.getItem('user');
+    return user != null
+  }
+
+  saveUser(user:Utilisateur){
+    this._user = user
+    const jsonString = JSON.stringify(user);
+    localStorage.setItem('user', jsonString);
+  }
+  logOut(){
+    localStorage.removeItem('user')
+  }
+
+  get user(): Utilisateur{
+    if( ! this._user){
+      const jsonString = localStorage.getItem('user');
+      this._user = JSON.parse(jsonString!);
     }
-}
+    return this._user!
+  }
+
+  
+  login(student: Utilisateur, asTeacher:boolean):Observable<Utilisateur>{
+    return asTeacher ? this.http.post<Teacher>('http://localhost:8080/professeurs/connect', student) :
+        this.http.post<Student>('http://localhost:8080/etudiants/connect', student);
+  }
 }

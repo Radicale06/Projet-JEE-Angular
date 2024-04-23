@@ -1,0 +1,76 @@
+
+.btn{
+    float: right;
+    background-color: #461A42;
+    color: white;
+    border: none;
+}
+.form-label{
+    color: #461A42;
+}
+.form-control{
+    background-color: #0000;
+    border-color: #461A42;
+    color: #461A42;
+}
+.container{
+    height: 100%;
+}
+.search-token{
+    margin: auto;
+    width: 60%;
+}
+
+
+
+
+
+/* .plain-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    height: 100%;
+    border: 5px dashed white;
+} */
+.loader {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+  }
+  .loader::after,
+  .loader::before {
+    content: '';  
+    box-sizing: border-box;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: lightblue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: animloader 2s linear infinite;
+  }
+  .loader::after {
+    animation-delay: 1s;
+  }
+  
+  @keyframes animloader {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+  .main-msg h3{
+    color: #461A42;
+    font-family: fantasy
+  }
+  .warning-msg span span{
+    color: red;
+    font-family: cursive;
+  }

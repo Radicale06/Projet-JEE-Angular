@@ -5,16 +5,14 @@
         <h4 class="">rank</h4>
 
     </div>
-    <div class="d-flex flex-row mt-5 m-4" *ngFor="let i of kk;let m = index;">
-        <h4 class="username">Kmaili</h4>
+    <div class="d-flex flex-row mt-5 m-4" *ngFor="let prog of progress;let progressIndex = index;">
+        <h4 class="username">{{prog.student.username}}</h4>
         <div class="ml-5">
-            <input disabled *ngFor="let _ of bb;let i=index;" class="case" [style]="(progress==i+1)?style_actual:(progress>=i+1)?style_answered:style_not_entered" />
+            <input disabled *ngFor="let _ of cases;let i=index;" [style]="getCaseStyle(prog,i)+style_not_entered" />
             <br/>
-            <img src="../assets/letter.png" width="50" height="50" [style]="icon_style"/>
+            <img src="../assets/letter.png" width="50" height="50" [style]="getIconPositionStyle(prog.progress.length)"/>
         </div>
         <button class="rank shadow ml-3" disabled>12</button>
     </div>
-
-    <button (click)="incProgress()">click</button>
 
 </div>

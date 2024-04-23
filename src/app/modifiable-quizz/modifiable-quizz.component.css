@@ -28,7 +28,20 @@
     color: white;
 }
 .validateBtn{
+    background-color: green;
+    color: white;
+    width: 45%;
+    float: right;
+    margin-top: 7%;
+}
+.addQuestion{
     background-color: #461A42;
     color: white;
-    width: 50%;
+    width: 15%;
+    float: left;
+    margin-top: 2%;
+}
+.disabled{
+    pointer-events: none;
+    opacity: 20%;
 }

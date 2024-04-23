@@ -1,0 +1,68 @@
+<div class="col align-items-center justify-content-center">
+    <div *ngIf=" ! token_presents">
+        <form class="p-5 search-token" (submit)="onSubmit()">
+            <label class="form-label" for="token">join new quizz</label>
+            <input class="form-control mt-1" id="token" [formControl]="token" type="text" placeholder="quizz token" />
+            <input class="btn btn-primary mt-1" type="submit" value="search" />
+        </form>
+    </div>
+    <div *ngIf="token_presents" class="m-5" style="height: 1px;background-color: white;"></div>
+    <div class="p-5 mt-3 align-items-center justify-content-center" *ngIf="token_presents">
+        <h3 class=" mb-5 text-center">Quizz Informations</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Quizz Name</label>
+                    <input type="text" class="form-control" [placeholder]="quizzData?.title" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Number of Questions</label>
+                    <input type="number" class="form-control" [placeholder]="quizzData?.questions?.length" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Creation Date</label>
+                    <input type="date" class="form-control" placeholder="" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Teacher</label>
+                    <input type="text" class="form-control" placeholder="-------------" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="number" class="form-control" [placeholder]="quizzData?.duration" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Max Participations</label>
+                    <input type="number" class="form-control" [placeholder]="quizzData?.maxParticipations" readonly />
+                </div>
+                <button class="btn btn-danger" (click)="quitQuizz()">
+                    Quit the quizz<i class="bi bi-box-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="token_presents" class="p-2">
+
+        <div class="d-flex justify-content-center align-items-center">
+            <span class="mr-3">
+                <span class="main-msg">
+                    <h3>Waiting for teacher to start the quizz</h3>
+                </span>
+                <br />
+                <p class="warning-msg">
+
+                    <span><span style="text-decoration: underline;font-weight: bold;">Warning:</span></span>
+                    <span><span> do not exist the full screen mode during the quizz</span></span>
+
+                </p>
+            </span>
+            <span class="loader"></span>
+        </div>
+    </div>
+    <div hidden class="m-auto col plain-screens">
+        <h1 class="msg m-auto" style="color: red;">Rawa7 nayyek</h1>
+        <img src="../assets/hadj.png" class="m-auto" width="200px" height="200px" />
+    </div>
+</div>

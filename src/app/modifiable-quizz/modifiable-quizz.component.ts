@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { QuizzServiceService } from '../quizz-service.service';
+import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
 import { NgStyle } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { Question } from '../models/question';
 import { Quizz } from '../models/quizz';
+import { Choice } from '../models/choice';
 
 @Component({
   selector: 'app-modifiable-quizz',
@@ -29,6 +30,7 @@ export class ModifiableQuizzComponent {
   'background-color': '#461A42'};
   notHoveredStyle  = {'width':'0%','weight':'0%'};
   modifyingIndex = -1;
+  openedToJoin: boolean = false;
   hoverQuestion(index:number){
     if(this.modifyingIndex == -1)
       this.hoveredQuestionIndex = index
@@ -39,8 +41,38 @@ export class ModifiableQuizzComponent {
     this.hoveredQuestionIndex = -1
     
   }
+  addQuestion(){
+    let newQuestion:Question = new Question(undefined,"",this.quizz?.id);
+    newQuestion.choices.push(new Choice(undefined,'',false,undefined))
+    this.questions.push(newQuestion)
+    this.modifyingIndex = this.questions.length - 1
+  }
+  openToJoin(){
+    this.quizzService.openForParticipation(this.quizz!).subscribe(response=>{
+      this.openedToJoin = true
+      this.toastr.success('quizz opened for students')
+    },
+  error => {
+    this.toastr.error('error')
+  })
+  }
   onReceiveAction(data:any){
-    if(data.action === 'save'){
+    if(data.action === 'save' && data.newQestion.id === undefined){
+      // it's a new created question not present in the DB, so we need to create it
+      this.quizzService.createQuestion(this.quizz!,data.newQestion).subscribe((response:Question)=>{
+        data.newQestion.id = response.id
+        this.toastr.success('question created')
+        this.modifyingIndex = -1;
+      console.log('sent data',data.newQestion);
+      },
+    error =>{
+      this.toastr.error('error')
+      console.log('sent data',data.newQestion,'\nthe error:', error);
+      
+    })
+
+    }
+    else if(data.action === 'save'){
         this.quizzService.updateQuestion(data.newQestion).subscribe(response=>{
           this.toastr.success('question saved')
           this.modifyingIndex = -1;
@@ -51,7 +83,15 @@ export class ModifiableQuizzComponent {
         console.log('sent data',data.newQestion,'\nthe error:', error);
         
       })
+    }else if (data.action === 'cancel' && data.question.id === undefined){
+      this.questions.pop()
+      this.modifyingIndex = -1;
     }else if (data.action === 'cancel'){
+      this.modifyingIndex = -1;
+    }else if (data.action === 'remove' && data.question.id === undefined){
+      // it's a new created Question in UI and not present on the DB, so we need just to remove it from the UI
+      this.toastr.success('question deleted')
+      this.questions.splice(this.modifyingIndex , 1)
       this.modifyingIndex = -1;
     }else{
       this.quizzService.deleteQuestion(this.quizz!,data.question).subscribe(response=>{
@@ -69,20 +109,17 @@ export class ModifiableQuizzComponent {
     }
   }
 
-  constructor(private route: ActivatedRoute, private quizzService: QuizzServiceService, private toastr: ToastrService) { 
+  constructor(private route: ActivatedRoute, private quizzService: TeacherQuizzServiceService, private toastr: ToastrService) { 
     
   }
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      const serializedQuizz = params.get('quizz');
-      if (serializedQuizz) {
-        this.quizz = JSON.parse(serializedQuizz);
-        
-        this.quizzService.fetchQuizzQuestions(this.quizz!.id).subscribe((response:Question[]) => {
-          this.questions = response;
-        });
-      }
+    this.route.params.subscribe(params => {
+      this.quizz = history.state.quizz as Quizz;
+      console.log('quizz: ',this.quizz);
+      this.quizzService.fetchQuizzQuestions(this.quizz!.id).subscribe((response:Question[]) => {
+        this.questions = response;
+      });
     });
   }
 

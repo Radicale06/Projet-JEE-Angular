@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentQuizzComponent } from './student-quizz/student-quizz.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { QuizzPageComponent } from './quizz-page/quizz-page.component';
 import { QuestionsComponent } from './questions/questions.component';
@@ -21,6 +21,8 @@ import { PrestartQuizzComponent } from './prestart-quizz/prestart-quizz.componen
 import { CreatedQuizzComponent } from './created-quizz/created-quizz.component';
 import { ModifiableQuizzComponent } from './modifiable-quizz/modifiable-quizz.component';
 import { ModifiableQuestionComponent } from './modifiable-question/modifiable-question.component';
+import { FinishedAttemptComponent } from './finished-attempt/finished-attempt.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { ModifiableQuestionComponent } from './modifiable-question/modifiable-qu
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    StudentHomeComponent,
+    StudentQuizzComponent,
     QuizzPageComponent,
     QuestionsComponent,
     TeacherHomeComponent,
@@ -38,6 +40,8 @@ import { ModifiableQuestionComponent } from './modifiable-question/modifiable-qu
     CreatedQuizzComponent,
     ModifiableQuizzComponent,
     ModifiableQuestionComponent,
+    FinishedAttemptComponent,
+    StudentDashboardComponent,
   ],
   imports: [
     BrowserModule,

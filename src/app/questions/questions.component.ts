@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { QuizzServiceService } from '../quizz-service.service';
+import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
 import { Router } from '@angular/router';
 import { Quizz } from '../models/quizz';
 import { Question } from '../models/question';
 import { Choice } from '../models/choice';
+import { AuthServiceService } from '../auth-service.service';
+import { Teacher } from '../models/teacher';
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
@@ -14,6 +16,12 @@ import { Choice } from '../models/choice';
 })
 export class QuestionsComponent {
   questionsForm: any = null ;
+
+
+  
+  get liste_quizzes(): any[]{
+    return this.teacherQuizzService.current_quizzes.concat(this.teacherQuizzService.finished_quizzes).concat(this.teacherQuizzService.ready_quizzes);
+  }
   fillWithExistingQuizz(quizz: Quizz) {
     this.questionsForm = this.fb.group({
       title: [quizz.title],
@@ -35,7 +43,8 @@ export class QuestionsComponent {
     this.addQuestion();
   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private toastr:ToastrService, private quizzService:QuizzServiceService, private router:Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toastr:ToastrService,
+     private teacherQuizzService:TeacherQuizzServiceService, private router:Router, private authService: AuthServiceService) {
     this.createEmptyQuizz()
   }
 
@@ -82,13 +91,13 @@ export class QuestionsComponent {
 
   
   saveQuestions() {
-      this.quizzService.createQuizz(this.questionsForm.value).subscribe(
+      this.teacherQuizzService.createQuizz(this.authService.user as Teacher ,this.questionsForm.value).subscribe(
         (response:Quizz) => {
           console.log('API response:', response);
           this.toastr.success('questions added')
           let param = JSON.stringify(response)
-          this.quizzService.add_recent_quizz(response)
-          this.router.navigate(['/teacher/modifiable_quizz'], { queryParams: { quizz: param } });
+          this.teacherQuizzService.ready_quizzes.push(response)
+          this.router.navigate(['/teacher/modifiable_quizz',response.id], { state: { quizz: response } });
           
         },
         error => {
@@ -102,7 +111,7 @@ export class QuestionsComponent {
   }
   fillQuestions(quizzId: number){
     this.questions().clear()
-    this.quizzService.fetchQuizzQuestions(quizzId).subscribe(
+    this.teacherQuizzService.fetchQuizzQuestions(quizzId).subscribe(
       (response: Question[]) => {
         console.log(response);
         response.map((question: Question)=>{

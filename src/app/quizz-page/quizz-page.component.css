@@ -1,10 +1,9 @@
-.plain-screen{
+.full-screen{
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-items: center;
-    height: 100%;
-    border: 5px dashed white;
+    height: 100vh;
 }
 .loader {
     width: 250px;
@@ -114,8 +113,8 @@ label{
 }
 .bottom-menu{
   display: flex;
-  width: 95%;
-  margin: auto;
+  width: 100%;
+  padding: 10px;
 }
 .previous, .next{
   flex: 10%;
@@ -124,6 +123,19 @@ label{
 }
 .pages{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex: 80%;
+}
+.clock{
+  position: absolute;
+  background-color: #461A42;
+  border-radius: 10px;
+  color: white;
+  float: right;
+  top: 4%;
+  right: 1%;
+  width: 15%;
+  padding: 15px;
 }

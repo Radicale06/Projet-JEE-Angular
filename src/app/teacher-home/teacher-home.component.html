@@ -5,29 +5,30 @@
                 <button class="new-quizz mb-5" (click)="displayNewQuizz()">
                     New quizz
                 </button>
-                
-                    <button class="btn dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Clone existing quizz<i class="bi bi-caret-down-fill ml-3"></i>
+                <label class="menu-title">
+                    Current quizzes
+                </label>
+                <div style="overflow-y: visible;">
+                    <button *ngFor="let quizz of list_current_quizzes" (click)="displayCurrentQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        {{quizz.title}}
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li *ngFor="let quizz of list_finished_quizzes" ><a class="dropdown-item">{{quizz.title}}</a></li>
-                    </ul>
-                <label class="created-quizz-title">
+                </div>
+                <label class="menu-title">
                     Ready quizzes
                 </label>
                 <div style="overflow-y: visible;">
-                    <button *ngFor="let quizz of list_recent_quizzes" (click)="displayQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'created-quizz'">
+                    <button *ngFor="let quizz of list_ready_quizzes" (click)="displayReadyQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
                         {{quizz.title}}
                     </button>
                 </div>
                     
-                <label class="created-quizz-title">
+                <label class="menu-title">
                     Finished quizzes
                 </label>
                 <div style="overflow-y: visible;">
-                    <button *ngFor="let quizz of list_finished_quizzes" (click)="displayQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'created-quizz'">
+                    <h5 *ngFor="let quizz of list_finished_quizzes" (click)="displayFinishedQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
                         {{quizz.title}}
-                    </button>
+                    </h5>
                 </div>
             </div>
         </div>

@@ -5,3 +5,29 @@ img{
     width: 75px;
     height: 75px;
 }
+.joinedStudent{
+    display: flex;
+    justify-items: center;
+    background-color: #461A42;
+    padding: 1%;
+    border-radius: 25px;
+    margin-top: 7px;
+}
+.joinedStudent h5{
+    color: white;
+    margin: auto;
+    margin-left: 5%;
+    text-transform: capitalize;
+}
+.joinedStudent h6{
+    color: white;
+    margin: auto;
+    margin-right: 2%;
+    text-decoration: underline;
+}
+.joinedStudent img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+}

@@ -5,12 +5,15 @@ import { ToastrService } from 'ngx-toastr';
 import { router } from 'ngx-bootstrap-icons';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
+import { Student } from '../models/student';
+import { Utilisateur } from '../models/utilisateur';
+import { Teacher } from '../models/teacher';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   active_page = 'student'
   signupForm : FormGroup
@@ -20,25 +23,25 @@ export class LoginComponent {
       password: new FormControl('',[Validators.required])
     });
   }
+  ngOnInit(): void {
+    localStorage.setItem('type','student')
+  }
   activateUserPage(userType: string){
     this.active_page = userType;
+    localStorage.setItem('type','teacher')
   }
   submit() {
     if(! this.signupForm.valid){
       this.toastr.error('Some fields are missing or invalides')
       return
     }
-    let userData = this.signupForm.value
-    let endpointUrl = 'http://localhost:8080' + (this.active_page == "student" ? "/etudiants":"/professeurs") + "/connect" 
-    
-    this.http.post(endpointUrl, userData).subscribe(
-    (response: any) => {
-      console.log('API response login:', response);
+    let userData:Utilisateur = this.signupForm.value
+    let asTeacher:boolean = this.active_page == 'teacher' ;
+    this.authService.login(userData, asTeacher).subscribe(
+    response => {
       this.toastr.success("Login successfully")
-      localStorage.setItem('userID',response.id)
-      localStorage.setItem('token',response.token)
-      this.authService.fetchCredentials(response.userID)
-      this.router.navigate(['/student']);
+      this.authService.saveUser(response)
+      asTeacher ? this.router.navigate(['/teacher']) : this.router.navigate(['/student'])
     },
     error => {
       console.error('Error:', );

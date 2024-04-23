@@ -1,13 +1,13 @@
 <form [formGroup]="questionForm"  class="mt-3 p-3 actualModified">
     <label class="form-label">question</label>
-<input class="form-control" formControlName="questionText"/>
+<input class="form-control" formControlName="questionText" placeholder="question"/>
 <div class="choices mt-3 ">
     <label class="form-label">choices</label>
     <div formArrayName="choices">
         <div *ngFor="let choice of questionForm.get('choices').controls let choiceIndex = index;" class="d-flex mt-2">
             <div class="d-flex w-100" [formGroupName]="choiceIndex">
                 
-                <input class="form-control choiceText" formControlName="choiceText"/>
+                <input class="form-control choiceText" formControlName="choiceText" placeholder="choice"/>
                 <input type="checkbox" class="checkbox" formControlName="isCorrect"/>
                 <button   class="rm-choice-btn" (click)="removeChoice(choiceIndex)">
                     <i class="bi bi-x-lg"></i>
