@@ -35,7 +35,7 @@ export class ProgressComponent implements OnInit, OnDestroy{
 
   }
   getCaseStyle(prog:any, index:number):string{
-    if (index >= prog.progress.length)
+    if (index >= prog.progress.length || prog.progress[index] == null)
       return this.style_not_entered!;
     else if(prog.progress[index])
       return this.style_correct;

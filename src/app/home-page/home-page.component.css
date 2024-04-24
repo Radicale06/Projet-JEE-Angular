@@ -1,0 +1,15 @@
+.main-div{
+    height: 80vh;
+    background: linear-gradient(#0000, #901B8F);
+}
+.title{
+    color: #901B8F;
+    font-family: Georgia, serif ;
+    font-weight: bold;
+}
+.image{
+    background-image: url('C:/Users/kmail/OneDrive/Bureau/Work_Directory/JEE/projet/fontend/quizz_frontend/src/assets/home-page.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

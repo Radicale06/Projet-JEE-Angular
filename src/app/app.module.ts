@@ -23,6 +23,7 @@ import { ModifiableQuizzComponent } from './modifiable-quizz/modifiable-quizz.co
 import { ModifiableQuestionComponent } from './modifiable-question/modifiable-question.component';
 import { FinishedAttemptComponent } from './finished-attempt/finished-attempt.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
     ModifiableQuestionComponent,
     FinishedAttemptComponent,
     StudentDashboardComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

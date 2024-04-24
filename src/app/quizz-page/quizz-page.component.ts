@@ -33,6 +33,7 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
 
   questions : any[]=[]
   currentQuestionIndex = 0
+  authorizedExit: boolean = false // exit by clicking "finish the quizz"
   currentTime$?: Observable<Date>;
   answeredQuestions : Map<number, Choice[]> = new Map<number, Choice[]>()
   constructor(private http:HttpClient , private route:ActivatedRoute,
@@ -74,7 +75,13 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
     
     const exitHandler = () => {
       if (!document.fullscreenElement) {
-        this.finishQuizzAttempt(-1,true);
+        
+        setTimeout(()=>{
+          console.log('ta7chelek');
+          
+            if( ! this.authorizedExit)
+              this.finishQuizzAttempt(-1,true);
+        },1000)
       }
     }
     document.addEventListener('fullscreenchange', exitHandler);
@@ -94,7 +101,6 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
     this.http.get(`http://localhost:8080/quizzes/${quizzId}/listquestions`).subscribe(
       response => {
         this.questions = response as any[]
-        this.toggleFullscreen()
         this.questions = this.questions.map((item) => {
           const choices = item.choices.map((choice: any) => ({ text:choice.text, className: "normal", id : choice.id, isCorrect : choice.isCorrect }));
           return {id: item.id, text: item.text,choices: choices };
@@ -109,16 +115,16 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
     return new Date(seconds * 1000);
   }
 
-
   finishQuizzAttempt(pageIndex:number ,cheated:boolean | undefined){
-    if(cheated != undefined){
+    this.authorizedExit = true
+    if(cheated == undefined){
       this.setAnswer(pageIndex);
       this.studentQuizzService.takenQuizzes.push(this.quizz!)
     }else{
       this.quizzAttempt!.isCheated = true
       this.reportCheatingAttempt()
     }
-    this.router.navigate(['/student/finished'], {state: {quizzAttempt: this.quizzAttempt}});
+    this.router.navigate(['/student/finished',this.quizz!.id], {state: {quizz: this.quizz!}});
   }
 
 

@@ -19,25 +19,21 @@ export class FinishedAttemptComponent implements OnInit{
   score: number = -1;
   questionsCount: number = -1;
   isCheated:boolean = false;
-  quizzAttempt?:QuizzAttempt = undefined;
-  quizz? : Quizz = undefined
-ngOnInit(): void {
   
-  
-  this.route.params.subscribe(params => {
-    this.quizzAttempt = history.state.quizzAttempt as QuizzAttempt;
-    this.quizz = history.state.quizz as Quizz;
+  ngOnInit(): void {
+    let quizz;
+
+    console.log('History state:', history.state);
+    
+    this.route.params.subscribe(params => {
+      quizz = history.state.quizz as Quizz;
+      console.log('Quizz:', quizz);      
+      console.log('Quizz Attempt is undefined, fetching...');
+      this.fetchQuizzAttempt(this.authService.user as Student, quizz!);
+
     });
-  if(this.quizzAttempt == undefined)
-    this.fetchQuizzAttempt(this.authService.user as Student, this.quizz!);
-    
-  else{
-    console.log('quizzAttempt ass: ',this.quizzAttempt);
   
-    this.fetchScoring(this.quizzAttempt)
   }
-    
-}
 
 private fetchQuizzAttempt(student:Student, quizz:Quizz){
   this.studentQuizzServices.fetchQuizzAttempt(student,quizz).subscribe(response=>{

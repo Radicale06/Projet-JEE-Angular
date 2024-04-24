@@ -4,6 +4,7 @@ import { AuthServiceService } from '../auth-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../models/student';
 import { Utilisateur } from '../models/utilisateur';
+import { router } from 'ngx-bootstrap-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,9 @@ export class NavbarComponent {
   }
   get isLogedIn():boolean{
     return this.authService.isUserExists
+  }
+  logout(){
+    this.authService.logOut()
   }
 
 }

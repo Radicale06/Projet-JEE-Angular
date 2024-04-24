@@ -11,9 +11,10 @@ import { ModifiableQuizzComponent } from './modifiable-quizz/modifiable-quizz.co
 import { ProgressComponent } from './progress/progress.component';
 import { FinishedAttemptComponent } from './finished-attempt/finished-attempt.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  {path:'',component:SignupComponent},
+  {path:'',component:HomePageComponent},
   {path:'signup',component:SignupComponent},
   {path:'login',component:LoginComponent},
   {path:'teacher',component:TeacherHomeComponent, children: [
@@ -24,7 +25,7 @@ const routes: Routes = [
   ]},
   {path:'student',component:StudentDashboardComponent, children:[
     {path: '', component: StudentQuizzComponent},
-    {path: 'finished', component: FinishedAttemptComponent}
+    {path: 'finished/:id', component: FinishedAttemptComponent}
   ]},
   {path:'quizz/:id/:duration',component:QuizzPageComponent}];
 

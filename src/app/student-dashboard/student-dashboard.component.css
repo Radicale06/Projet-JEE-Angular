@@ -1,3 +1,12 @@
+.new-quizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #ffffff00;
+    border: 2px dotted white;
+    margin-top: 5%;
+}
 .sideMenu{
     background-color: #461A42;
     height: 100vh;
@@ -17,11 +26,12 @@
     cursor: pointer;
 }
 .joined-quizz-title{
-    color: white;
-    text-decoration: underline;
-    font-size: 130%;
+    margin-top: 10%;
+    font-size: 120%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: monospace;
+    background-color: gray;
+    border: 2px solid white;
+
 }

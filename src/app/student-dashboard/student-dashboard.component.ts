@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 })
 export class StudentDashboardComponent implements OnInit {
 displayFinishedQuizz(quizz: Quizz) {
-  this.router.navigate(['/student/finished'], {state: {quizz: quizz}});
+  console.log('navigable quizz:' ,quizz);
+  this.router.navigate(['/student/finished',quizz.id], {state: {quizz: quizz}});
+  
+  
 }
   
   
@@ -20,6 +23,9 @@ displayFinishedQuizz(quizz: Quizz) {
               private router:Router){}
   ngOnInit(): void {
     this.fetchTakenQuizzes()
+  }
+  DisplayJoiningPage(){
+    this.router.navigate(['/student'])
   }
   get takenQuizzes():Quizz[]{
     return this.studentQuizzService.takenQuizzes;
