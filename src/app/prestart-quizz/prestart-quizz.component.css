@@ -1,10 +1,6 @@
 h4{
     color: #461A42;
 }
-img{
-    width: 75px;
-    height: 75px;
-}
 .joinedStudent{
     display: flex;
     justify-items: center;
@@ -31,3 +27,10 @@ img{
     border: 2px solid white;
     border-radius: 50%;
 }
+.indicator{
+    background-color: #461A42;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+  }

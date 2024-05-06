@@ -1,4 +1,4 @@
-<div [ngClass]="openedToJoin?'disabled container mt-2':'container mt-2'">
+<div [ngClass]="disabled ? 'disabled container mt-2':'container mt-2'">
 
     <h4 class="mt-3">Quizz Informations</h4>
     <div class=" row p-3">
@@ -60,6 +60,6 @@
         </div>
     </div>
 </div>
-<div *ngIf="openedToJoin">
+<div *ngIf="disabled">
     <app-prestart-quizz [quizz]="quizz"></app-prestart-quizz>
 </div>

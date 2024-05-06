@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './student-dashboard.component.css'
 })
 export class StudentDashboardComponent implements OnInit {
+  selectedQuizzId:number = -1
+
+
 displayFinishedQuizz(quizz: Quizz) {
   console.log('navigable quizz:' ,quizz);
   this.router.navigate(['/student/finished',quizz.id], {state: {quizz: quizz}});

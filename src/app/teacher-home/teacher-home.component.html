@@ -5,30 +5,36 @@
                 <button class="new-quizz mb-5" (click)="displayNewQuizz()">
                     New quizz
                 </button>
-                <label class="menu-title">
+                <h4 class="menu-title">
                     Current quizzes
-                </label>
+                </h4>
+                <h6 *ngIf="list_current_quizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
                 <div style="overflow-y: visible;">
-                    <button *ngFor="let quizz of list_current_quizzes" (click)="displayCurrentQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                    <h5 *ngFor="let quizz of list_current_quizzes" (click)="displayCurrentQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        <i class="bi bi-lg"></i>
                         {{quizz.title}}
-                    </button>
+                    </h5>
                 </div>
                 <label class="menu-title">
                     Ready quizzes
                 </label>
+                <h6 *ngIf="list_ready_quizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
                 <div style="overflow-y: visible;">
-                    <button *ngFor="let quizz of list_ready_quizzes" (click)="displayReadyQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                    <h5 *ngFor="let quizz of list_ready_quizzes" (click)="displayReadyQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        <i class="bi bi-lg"></i>
                         {{quizz.title}}
-                    </button>
+                    </h5>
                 </div>
                     
                 <label class="menu-title">
                     Finished quizzes
                 </label>
+                <h6 *ngIf="list_finished_quizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
                 <div style="overflow-y: visible;">
-                    <h5 *ngFor="let quizz of list_finished_quizzes" (click)="displayFinishedQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                    <h6 *ngFor="let quizz of list_finished_quizzes" (click)="displayFinishedQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        <i class="bi bi-hash"></i>
                         {{quizz.title}}
-                    </h5>
+                    </h6>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@ export class ProgressComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
   getIconPositionStyle(progressMargin:number):string{
-    return  `margin-top:1%;margin-left:${(100/this.cases.length)*(progressMargin)}%;border-radius:50%;transform: translateX(-35%);border: 2px solid #461A42;`
+    return  `margin-top:1%;margin-left:${(100/this.cases.length)*(progressMargin)}%;transform: translateX(-35%);border: 2px solid #461A42;`
 
   }
   getCaseStyle(prog:any, index:number):string{

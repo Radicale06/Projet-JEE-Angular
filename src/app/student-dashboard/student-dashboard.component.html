@@ -1,19 +1,20 @@
-<div class="container-fluid h-100 mt-1">
+<div class="mt-1">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sideMenu d-flex flex-column">
             <div class="d-flex flex-column justify-content-center  px-3 pt-2 text-white">
-                <button class="new-quizz mb-5" (click)="DisplayJoiningPage()">
+                <button class="new-quizz mb-5" (click)="DisplayJoiningPage();">
                     Join quizz
                 </button>
                 <label class="joined-quizz-title">
                     Taken quizzes
                 </label>
-                <button *ngFor="let quizz of takenQuizzes" class="joined-quizz" (click)="displayFinishedQuizz(quizz)">
+                <h6 *ngIf="takenQuizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
+                <h5 *ngFor="let quizz of takenQuizzes" [ngClass]="quizz.id == selectedQuizzId ?  'selected_quizz_btn' : 'unselected_quizz'" (click)="displayFinishedQuizz(quizz);selectedQuizzId = quizz.id">
                     {{quizz.title}}
-                </button>
+                </h5>
             </div>
         </div>
-        <div class="col" style="height: 100vh;">
+        <div class="col">
             <router-outlet></router-outlet>
         </div>
     </div>

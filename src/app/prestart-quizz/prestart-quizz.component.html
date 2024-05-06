@@ -4,7 +4,9 @@
         <h4 class="mt-3">Joined Students</h4>
         <img src="../assets/loading.gif" />
         <div *ngFor="let etudiant of liste_etudiants" class="joinedStudent">
-                <img src="../assets/letter.png" />
+                <div class="card shadow indicator" >
+                        <h3 class="text-white m-auto">{{etudiant.username[0].toUpperCase()}}</h3>
+                </div>
                 <h5>{{etudiant.username}}</h5>
                 <h6>{{etudiant.etablissement}}:{{etudiant.classe}}</h6>
         </div>

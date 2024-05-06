@@ -1,18 +1,34 @@
 <div class="d-flex flex-column">
     <div class="d-flex flex-row mt-2 header">
-        <h4 class="">student</h4>
+        <h4 class="my-auto">student</h4>
         <h4 class="m-auto">progress</h4>
-        <h4 class="">rank</h4>
+        <div class=" bg-white h-100 float-end legend">
+             <div class="d-flex legend-item">
+                <div class="bg-success"></div>  <p>correct answer</p>
+             </div>
+             <div class="d-flex legend-item">
+                <div class="bg-danger"></div>  <p>wrong answer</p>
+             </div>
+             <div class="d-flex legend-item">
+                <div class="bg-white"></div>  <p>not answered yet</p>
+             </div>
+             <div class="d-flex legend-item">
+                <div class="cheating-attempt"></div>  <p>cheating attempt</p>
+             </div>
+        </div>
 
     </div>
-    <div class="d-flex flex-row mt-5 m-4" *ngFor="let prog of progress;let progressIndex = index;">
-        <h4 class="username">{{prog.student.username}}</h4>
-        <div class="ml-5">
-            <input disabled *ngFor="let _ of cases;let i=index;" [style]="getCaseStyle(prog,i)+style_not_entered" />
-            <br/>
-            <img src="../assets/letter.png" width="50" height="50" [style]="getIconPositionStyle(prog.progress.length)"/>
+    <div class="progress-content">
+        <div [class]="prog.cheated ? 'd-flex flex-row mt-5 m-4 warning' : 'd-flex flex-row mt-5 m-4'" *ngFor="let prog of progress;let progressIndex = index;">
+            <h4 class="username">{{prog.student.username}}</h4>
+            <div class="ml-5">
+                <input disabled *ngFor="let _ of cases;let i=index;" [style]="getCaseStyle(prog,i)+style_not_entered" />
+                <br/>
+                <div class="card shadow indicator" [style]="getIconPositionStyle(prog.progress.length)">
+                    <h3 class="text-white m-auto">{{prog.student.username[0].toUpperCase()}}</h3>
+                </div>
+            </div>
         </div>
-        <button class="rank shadow ml-3" disabled>12</button>
     </div>
 
 </div>

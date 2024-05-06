@@ -18,8 +18,7 @@
     cursor: pointer;
     padding-left: 2%;
     border-left: 2px solid white;
-    font-weight: bold;
-    animation: vibration 0.5s ease-in-out infinite;
+     animation: vibration 0.5s ease-in-out infinite;
 }
 @keyframes vibration {
     0% { transform: translateX(0); }
@@ -44,9 +43,7 @@
 .menu-title{
     margin-top: 10%;
     font-size: 120%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     background-color: gray;
     border: 2px solid white;
 }

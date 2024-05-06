@@ -3,26 +3,26 @@ import { Question } from "./question"
 export class Quizz {
 
     private _id: number
-    private _title:string
-    private _duration:number
-    private _token:number
+    private _title: string
+    private _duration: number
+    private _token: number
     private _started: boolean
-    private _finished:boolean
-    private _opentojoint: boolean
-    private _maxParticipations:number
+    private _finished: boolean
+    private _opentojoin: boolean
+    private _maxParticipations: number
     private _questions: Question[]
 
-    constructor(id: number, title:string, duration:number,
-                token:number, started: boolean, finished:boolean,
-                opentojoin: boolean, maxParticipations:number){
-        this._id=id;
-        this._title=title;
-        this._duration=duration;
-        this._token=token;
-        this._started=started;
-        this._finished=finished;
-        this._opentojoint=opentojoin;
-        this._maxParticipations=maxParticipations;
+    constructor(id: number, title: string, duration: number,
+        token: number, started: boolean, finished: boolean,
+        opentojoin: boolean, maxParticipations: number) {
+        this._id = id;
+        this._title = title;
+        this._duration = duration;
+        this._token = token;
+        this._started = started;
+        this._finished = finished;
+        this._opentojoin = opentojoin;
+        this._maxParticipations = maxParticipations;
         this._questions = []
     }
 
@@ -51,8 +51,8 @@ export class Quizz {
         return this._finished;
     }
 
-    get opentojoint(): boolean {
-        return this._opentojoint;
+    get opentojoin(): boolean {
+        return this._opentojoin;
     }
 
     get maxParticipations(): number {
@@ -88,8 +88,8 @@ export class Quizz {
         this._finished = value;
     }
 
-    set opentojoint(value: boolean) {
-        this._opentojoint = value;
+    set opentojoin(value: boolean) {
+        this._opentojoin = value;
     }
 
     set maxParticipations(value: number) {
@@ -100,12 +100,11 @@ export class Quizz {
         this._questions = value;
     }
 
-    // Other methods
-    addQuestion(question: Question): void{
+    addQuestion(question: Question): void {
         this._questions.push(question)
     }
 
-    deleteQuestion(question: Question): void{
-        this._questions = this._questions.filter((item:Question) => item.id !== question.id);
+    deleteQuestion(question: Question): void {
+        this._questions = this._questions.filter((item: Question) => item.id !== question.id);
     }
 }

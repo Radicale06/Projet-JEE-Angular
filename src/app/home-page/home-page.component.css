@@ -1,15 +1,21 @@
-.main-div{
-    height: 80vh;
-    background: linear-gradient(#0000, #901B8F);
-}
+
 .title{
     color: #901B8F;
-    font-family: Georgia, serif ;
-    font-weight: bold;
+    font: bold 80px Sans-Serif;
 }
 .image{
     background-image: url('C:/Users/kmail/OneDrive/Bureau/Work_Directory/JEE/projet/fontend/quizz_frontend/src/assets/home-page.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.btn-get-started{
+    border-radius: 25px;
+    background-color: #901B8F;
+    color: white;
+    padding: 15px;
+}
+.description{
+    font-family: monospace;
+    font-size: 20px;
 }

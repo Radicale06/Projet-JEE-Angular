@@ -56,21 +56,13 @@ error => {
           this.token.reset()
           this.quizzData = response.quizz
           this.quizzAttempt = response.quizzAttempt
-          //this.joinedQuizzes.push(this.quizzData!.title)
           console.log(response)
           this.toastr.success("joined")
           this.listenForStarting()
         },
         error => {
           console.error('Error:', error);
-          if(error.status == 404)
-            this.toastr.error("token invalide")
-          else if(error.status == 406)
-            this.toastr.info("quizz already taken")
-          else if(error.status == 409)
-            this.toastr.info("max participations number reached")
-          else
-            this.toastr.error("Something Wrong !")
+          this.toastr.error(error.error.message)
         }
       );
     }

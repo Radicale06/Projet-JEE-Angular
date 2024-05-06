@@ -7,7 +7,7 @@ import { QuizzAttempt } from '../models/quizz-attempt';
 import { Choice } from '../models/choice';
 import { Observable } from 'rxjs/internal/Observable';
 import { timer } from 'rxjs/internal/observable/timer';
-import { map } from 'rxjs';
+import { finalize, map, takeWhile } from 'rxjs';
 import { StudentQuizzServiceService } from '../student-quizz-service.service';
 import { Quizz } from '../models/quizz';
 
@@ -67,7 +67,7 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
     });
     this.initialTime = this.duration * 60 ;
     this.currentTime$ = timer(0, 1000).pipe(
-      map(() => this.secondsToTime(this.initialTime--))
+      map(() => this.secondsToTime(this.initialTime--)!)
     );
     
 
@@ -77,8 +77,6 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
       if (!document.fullscreenElement) {
         
         setTimeout(()=>{
-          console.log('ta7chelek');
-          
             if( ! this.authorizedExit)
               this.finishQuizzAttempt(-1,true);
         },1000)
@@ -111,7 +109,11 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
       }
     )
   }
-  private secondsToTime(seconds: number): Date {
+  private secondsToTime(seconds: number): Date | undefined {
+    if(seconds <= 0){
+      this.finishQuizzAttempt(this.currentQuestionIndex, undefined)
+      return undefined;
+    }
     return new Date(seconds * 1000);
   }
 

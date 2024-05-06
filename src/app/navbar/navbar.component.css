@@ -1,14 +1,14 @@
-.nav-btn{
-    padding: 1em;
-    font-size: 100%;
-    margin: 2px;
+.nav-btn:hover{
     color: #461A42;
     background-color: white;
 }
-.nav-btn:hover{
+.nav-btn{
     outline: 2px solid white;
     background-color: #0000;
     color: white;
+    padding: 1em;
+    font-size: 100%;
+    margin: 2px;
 }
 .title{
     margin-top: 2%;
@@ -20,6 +20,8 @@
 }
 .navbar{
     background-color: #461A42;
+    height: 100px;
+    box-shadow: 0px 2px 2px black;
 }
 .userBtn{
     border: 1px solid white;

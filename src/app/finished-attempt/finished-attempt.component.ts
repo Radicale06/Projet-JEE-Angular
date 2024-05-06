@@ -14,7 +14,6 @@ import { Student } from '../models/student';
 export class FinishedAttemptComponent implements OnInit{
 
   constructor(private route:ActivatedRoute, private studentQuizzServices:StudentQuizzServiceService, private authService:AuthServiceService){}
-  rank: number = -1;
   competitorsCount: number = -1;
   score: number = -1;
   questionsCount: number = -1;
@@ -49,7 +48,6 @@ private fetchScoring(quizzAttempt:QuizzAttempt){
     console.log('scoring response: ',response);
     this.score = response.score
     this.questionsCount = response.questionsCount
-    this.rank = response.rank
     this.competitorsCount = response.competitorsCount
     this.isCheated = response.cheated
   },

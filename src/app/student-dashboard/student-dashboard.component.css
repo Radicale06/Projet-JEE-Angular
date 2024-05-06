@@ -11,19 +11,25 @@
     background-color: #461A42;
     height: 100vh;
 }
-.joined-quizz{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.unselected_quizz, .selected_quizz_btn{
     color: white;
     background-color: #0000;
-    border: 1px solid white;
     margin-top: 5%;
+    text-align: start;
 }
-.joined-quizz:hover{
-    background-color: white;
-    color: #461A42;
+.unselected_quizz:hover, .selected_quizz_btn{
     cursor: pointer;
+    padding-left: 2%;
+    border-left: 2px solid white;
+    font-weight: bold;
+    animation: vibration 0.5s ease-in-out infinite;
+}
+@keyframes vibration {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
 }
 .joined-quizz-title{
     margin-top: 10%;

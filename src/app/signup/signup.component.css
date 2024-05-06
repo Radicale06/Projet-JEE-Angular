@@ -128,3 +128,8 @@ img{
     width: 80%;
     height: 100%;
 }
+option{
+    background-color: #461A42;
+    color: white;
+    font-size: 18px;
+}

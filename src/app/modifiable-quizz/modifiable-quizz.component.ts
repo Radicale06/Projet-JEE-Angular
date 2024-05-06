@@ -16,6 +16,7 @@ export class ModifiableQuizzComponent {
   quizz?: Quizz ;
   questions: Question[] = [];
   hoveredQuestionIndex: number = -1 ;
+  disabled:boolean = false
   hoverStyle = {'visibility':'visible',
   'position': 'absolute',
   'top': '0',
@@ -30,7 +31,6 @@ export class ModifiableQuizzComponent {
   'background-color': '#461A42'};
   notHoveredStyle  = {'width':'0%','weight':'0%'};
   modifyingIndex = -1;
-  openedToJoin: boolean = false;
   hoverQuestion(index:number){
     if(this.modifyingIndex == -1)
       this.hoveredQuestionIndex = index
@@ -49,8 +49,8 @@ export class ModifiableQuizzComponent {
   }
   openToJoin(){
     this.quizzService.openForParticipation(this.quizz!).subscribe(response=>{
-      this.openedToJoin = true
       this.toastr.success('quizz opened for students')
+      this.disabled = true
     },
   error => {
     this.toastr.error('error')
@@ -116,11 +116,12 @@ export class ModifiableQuizzComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.quizz = history.state.quizz as Quizz;
-      console.log('quizz: ',this.quizz);
       this.quizzService.fetchQuizzQuestions(this.quizz!.id).subscribe((response:Question[]) => {
         this.questions = response;
       });
-    });
+    });this.disabled = this.quizz!.started
+    console.log('quizz: ',this.quizz,'disabled',this.disabled);
+    
   }
 
 
