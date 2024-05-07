@@ -1,9 +1,9 @@
 <div class="col align-items-center justify-content-center">
     <div *ngIf=" ! token_presents">
-        <form class="p-5 search-token" (submit)="onSubmit()">
+        <form class="p-5 search-token">
             <label class="form-label" for="token">join new quizz</label>
             <input class="form-control mt-1" id="token" [formControl]="token" type="text" placeholder="quizz token" />
-            <input class="btn btn-primary mt-1" type="submit" value="search" />
+            <input class="btn btn-primary mt-1" type="button" value="search" (click)="onSubmit()" />
         </form>
     </div>
     <div *ngIf="token_presents" class="m-5" style="height: 1px;background-color: white;"></div>

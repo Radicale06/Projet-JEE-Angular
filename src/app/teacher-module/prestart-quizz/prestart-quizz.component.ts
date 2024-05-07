@@ -1,8 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
-import { Quizz } from '../models/quizz';
-import { Student } from '../models/student';
-import { Utilisateur } from '../models/utilisateur';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
+import { Quizz } from '../../models/quizz';
+import { Student } from '../../models/student';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 

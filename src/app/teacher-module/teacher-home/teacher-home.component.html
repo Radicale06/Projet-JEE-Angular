@@ -10,20 +10,20 @@
                 </h4>
                 <h6 *ngIf="list_current_quizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
                 <div style="overflow-y: visible;">
-                    <h5 *ngFor="let quizz of list_current_quizzes" (click)="displayCurrentQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
-                        <i class="bi bi-lg"></i>
+                    <h6 *ngFor="let quizz of list_current_quizzes" (click)="displayCurrentQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        <i class="bi bi-hash"></i>
                         {{quizz.title}}
-                    </h5>
+                    </h6>
                 </div>
                 <label class="menu-title">
                     Ready quizzes
                 </label>
                 <h6 *ngIf="list_ready_quizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
                 <div style="overflow-y: visible;">
-                    <h5 *ngFor="let quizz of list_ready_quizzes" (click)="displayReadyQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
-                        <i class="bi bi-lg"></i>
+                    <h6 *ngFor="let quizz of list_ready_quizzes" (click)="displayReadyQuizz(quizz)" [ngClass]="quizz.id == actualQuizzId?'selected_quizz_btn':'unselected-quizz'">
+                        <i class="bi bi-hash"></i>
                         {{quizz.title}}
-                    </h5>
+                    </h6>
                 </div>
                     
                 <label class="menu-title">

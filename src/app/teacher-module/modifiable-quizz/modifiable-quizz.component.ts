@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
 import { NgStyle } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { Question } from '../models/question';
-import { Quizz } from '../models/quizz';
-import { Choice } from '../models/choice';
+import { Question } from '../../models/question';
+import { Quizz } from '../../models/quizz';
+import { Choice } from '../../models/choice';
 
 @Component({
   selector: 'app-modifiable-quizz',

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { Question } from '../models/question';
-import { Choice } from '../models/choice';
+import { Question } from '../../models/question';
+import { Choice } from '../../models/choice';
 
 @Component({
   selector: 'app-modifiable-question',

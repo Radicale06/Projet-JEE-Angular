@@ -41,11 +41,11 @@ export class AuthServiceService {
 
   
   login(user: Utilisateur, asTeacher:boolean):Observable<Utilisateur>{
-    return asTeacher ? this.http.post<Teacher>('http://localhost:8080/professeurs/connect', user) :
-        this.http.post<Student>('http://localhost:8080/etudiants/connect', user);
+    return asTeacher ? this.http.post<Teacher>('http://192.168.1.14:8080/professeurs/connect', user) :
+        this.http.post<Student>('http://192.168.1.14:8080/etudiants/connect', user);
   }
   register(user: Utilisateur, asTeacher:boolean):Observable<Utilisateur>{
-    let endpointUrl = `http://localhost:8080/${asTeacher ? "professeurs":"etudiants"}/save` 
+    let endpointUrl = `http://192.168.1.14:8080/${asTeacher ? "professeurs":"etudiants"}/save` 
     return this.http.post<Utilisateur>(endpointUrl, user)
   }
 }

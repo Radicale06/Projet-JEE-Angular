@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentQuizzServiceService } from '../student-quizz-service.service';
-import { ActivatedRoute } from '@angular/router';
-import { QuizzAttempt } from '../models/quizz-attempt';
-import { Quizz } from '../models/quizz';
-import { AuthServiceService } from '../auth-service.service';
-import { Student } from '../models/student';
+import { StudentQuizzServiceService } from '../../student-quizz-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuizzAttempt } from '../../models/quizz-attempt';
+import { Quizz } from '../../models/quizz';
+import { AuthServiceService } from '../../auth-service.service';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-finished-attempt',
@@ -13,7 +13,7 @@ import { Student } from '../models/student';
 })
 export class FinishedAttemptComponent implements OnInit{
 
-  constructor(private route:ActivatedRoute, private studentQuizzServices:StudentQuizzServiceService, private authService:AuthServiceService){}
+  constructor(private route:ActivatedRoute, private studentQuizzServices:StudentQuizzServiceService, private authService:AuthServiceService, private router:Router){}
   competitorsCount: number = -1;
   score: number = -1;
   questionsCount: number = -1;
@@ -50,6 +50,9 @@ private fetchScoring(quizzAttempt:QuizzAttempt){
     this.questionsCount = response.questionsCount
     this.competitorsCount = response.competitorsCount
     this.isCheated = response.cheated
+    this.router.navigateByUrl(`/finished/${quizzAttempt.id}`, {skipLocationChange: true}).then(() => {
+      window.location.href = this.router.url;
+    })
   },
 error => {
   console.log('scoring error: ',error);

@@ -1,10 +1,8 @@
-import { style } from '@angular/animations';
-import { NgStyle } from '@angular/common';
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
-import { Quizz } from '../models/quizz';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Quizz } from '../../models/quizz';
 import { ActivatedRoute } from '@angular/router';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
 
 @Component({
   selector: 'app-progress',
@@ -30,8 +28,16 @@ export class ProgressComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-  getIconPositionStyle(progressMargin:number):string{
-    return  `margin-top:1%;margin-left:${(100/this.cases.length)*(progressMargin)}%;transform: translateX(-35%);border: 2px solid #461A42;`
+  getIconPositionStyle(progressList:any[]):string{
+    
+    let currentQuestionIndex = -1;
+    for(let i=progressList.length-1; i>=0; i--){
+      if(progressList.at(i) !== null){
+        currentQuestionIndex = i;
+        break;
+      }
+    }
+    return  `margin-top:1%;margin-left:${(100/this.cases.length)*(currentQuestionIndex+1)}%;transform: translateX(-35%);border: 2px solid #461A42;`
 
   }
   getCaseStyle(prog:any, index:number):string{
@@ -47,13 +53,17 @@ export class ProgressComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.subscription.unsubscribe();
+      this.cases = []
       this.quizz = history.state.quizz as Quizz;
       console.log('quizz: ',this.quizz);
+      this.fetchProgress()
+      for(let i=0; i<this.quizz!.questions.length;i++)
+        this.cases.push(i)
+      this.style_not_entered = 'width:'+100/this.cases.length+'%;height:15px;'
+
     });
-    this.fetchProgress()
-    for(let i=0; i<this.quizz!.questions.length;i++)
-      this.cases.push(i)
-    this.style_not_entered = 'width:'+100/this.cases.length+'%;height:15px;'
+    
     
   }
 

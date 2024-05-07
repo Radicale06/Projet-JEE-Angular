@@ -21,40 +21,40 @@ export class TeacherQuizzServiceService {
 
   
   fetchQuizzQuestions(quizzId: number): Observable<Question[]>{
-    return this.http.get<Question[]>(`http://localhost:8080/quizzes/${quizzId}/listquestions`);
+    return this.http.get<Question[]>(`http://192.168.1.14:8080/quizzes/${quizzId}/listquestions`);
   }
   fetchQuizzes(teacher:Teacher): Observable<Quizz[]>{
     this.finished_quizzes = []
     this.current_quizzes = []
     this.ready_quizzes = []
-    return this.http.get<Quizz[]>(`http://localhost:8080/professeurs/${teacher.id}/createdquizzes`);
+    return this.http.get<Quizz[]>(`http://192.168.1.14:8080/professeurs/${teacher.id}/createdquizzes`);
   }
 
   createQuizz(teacher:Teacher ,quizz : Quizz): Observable<Quizz>{
-    return this.http.post<Quizz>(`http://localhost:8080/quizzes/${teacher.id}/createquizz`, quizz);
+    return this.http.post<Quizz>(`http://192.168.1.14:8080/quizzes/${teacher.id}/createquizz`, quizz);
   }
   createQuestion(quizz : Quizz, question: Question): Observable<Question>{
-    return this.http.post<Question>(`http://localhost:8080/quizzes/${quizz.id}/createquestion`, question);
+    return this.http.post<Question>(`http://192.168.1.14:8080/quizzes/${quizz.id}/createquestion`, question);
   }
   deleteQuestion(quizz:Quizz,question : Question): Observable<any>{
-    return this.http.delete(`http://localhost:8080/quizzes/${quizz.id}/deletequestion/${question.id}`);
+    return this.http.delete(`http://192.168.1.14:8080/quizzes/${quizz.id}/deletequestion/${question.id}`);
   }
   updateQuestion(newQuestion : Question): Observable<any>{
-    return this.http.patch("http://localhost:8080/quizzes/updatequestion",newQuestion);
+    return this.http.patch("http://192.168.1.14:8080/quizzes/updatequestion",newQuestion);
   }
   openForParticipation(quizz:Quizz): Observable<any>{
-    return this.http.patch(`http://localhost:8080/quizzes/open/${quizz.id}`,null);
+    return this.http.patch(`http://192.168.1.14:8080/quizzes/open/${quizz.id}`,null);
   }
   getJoinedStudents(quizz:Quizz): Observable<Student []>{
     return interval(2500).pipe(
-      switchMap(() => this.http.get<Student []>(`http://localhost:8080/quizzes/joinedStudents/${quizz.id}`)));
+      switchMap(() => this.http.get<Student []>(`http://192.168.1.14:8080/quizzes/joinedStudents/${quizz.id}`)));
   }
   getProgress(quizz:Quizz): Observable<any>{
     return interval(2500).pipe(
-      switchMap(() => this.http.get<any>(`http://localhost:8080/quizzes/progress/${quizz.id}`)));
+      switchMap(() => this.http.get<any>(`http://192.168.1.14:8080/quizzes/progress/${quizz.id}`)));
   }
   startQuizz(quizz:Quizz):Observable<any>{
-    return this.http.patch(`http://localhost:8080/quizzes/startquizz/${quizz.id}`,null);
+    return this.http.patch(`http://192.168.1.14:8080/quizzes/startquizz/${quizz.id}`,null);
   }
 
   

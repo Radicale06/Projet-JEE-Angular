@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
-import { Question } from '../models/question';
-import { Quizz } from '../models/quizz';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
+import { Question } from '../../models/question';
+import { Quizz } from '../../models/quizz';
 
 @Component({
   selector: 'app-created-quizz',

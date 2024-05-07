@@ -15,7 +15,7 @@ export class Student extends Utilisateur {
         _rememberMeToken: string,
         _classe: string
     ) {
-        super(_id, _firstname, _lastname, _email, _username, _gender, _password, _etablissement, _rememberMeToken);
+        super(_id, _firstname, _lastname, _email, _username, _gender, _password, _etablissement);
         this._classe = _classe;
     }
 

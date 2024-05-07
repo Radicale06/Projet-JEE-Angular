@@ -9,9 +9,10 @@
                     Taken quizzes
                 </label>
                 <h6 *ngIf="takenQuizzes.length == 0" class="m-auto mt-2" style="text-decoration: underline;">empty</h6>
-                <h5 *ngFor="let quizz of takenQuizzes" [ngClass]="quizz.id == selectedQuizzId ?  'selected_quizz_btn' : 'unselected_quizz'" (click)="displayFinishedQuizz(quizz);selectedQuizzId = quizz.id">
+                <h6 *ngFor="let quizz of takenQuizzes" [ngClass]="quizz.id == selectedQuizzId ?  'selected_quizz_btn' : 'unselected_quizz'" (click)="displayFinishedQuizz(quizz);selectedQuizzId = quizz.id">
+                    <i class="bi bi-hash"></i>
                     {{quizz.title}}
-                </h5>
+                </h6>
             </div>
         </div>
         <div class="col">

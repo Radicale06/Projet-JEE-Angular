@@ -3,13 +3,13 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { list } from 'ngx-bootstrap-icons';
 import { ToastrService } from 'ngx-toastr';
-import { Quizz } from '../models/quizz';
-import { AuthServiceService } from '../auth-service.service';
+import { Quizz } from '../../models/quizz';
+import { AuthServiceService } from '../../auth-service.service';
 import { Router } from '@angular/router';
-import { QuizzAttempt } from '../models/quizz-attempt';
+import { QuizzAttempt } from '../../models/quizz-attempt';
 import { Observable, Subscription } from 'rxjs';
-import { Student } from '../models/student';
-import { StudentQuizzServiceService } from '../student-quizz-service.service';
+import { Student } from '../../models/student';
+import { StudentQuizzServiceService } from '../../student-quizz-service.service';
 
 @Component({
   selector: 'app-student-quizz',

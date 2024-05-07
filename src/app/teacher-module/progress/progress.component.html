@@ -24,7 +24,7 @@
             <div class="ml-5">
                 <input disabled *ngFor="let _ of cases;let i=index;" [style]="getCaseStyle(prog,i)+style_not_entered" />
                 <br/>
-                <div class="card shadow indicator" [style]="getIconPositionStyle(prog.progress.length)">
+                <div class="card shadow indicator" [style]="getIconPositionStyle(prog.progress)">
                     <h3 class="text-white m-auto">{{prog.student.username[0].toUpperCase()}}</h3>
                 </div>
             </div>

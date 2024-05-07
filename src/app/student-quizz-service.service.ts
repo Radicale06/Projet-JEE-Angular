@@ -18,39 +18,39 @@ export class StudentQuizzServiceService {
   constructor(private http:HttpClient) { }
 
   fetchQuizzAttempt(student:Student, quizz:Quizz):Observable<QuizzAttempt>{
-    return this.http.get<QuizzAttempt>(`http://localhost:8080/quizzes/${quizz.id}/get_attempt/${student.id}`);
+    return this.http.get<QuizzAttempt>(`http://192.168.1.14:8080/quizzes/${quizz.id}/get_attempt/${student.id}`);
   }
   fetchQuizzes(student:Student):Observable<Quizz[]>{
     this.takenQuizzes = []
-    return this.http.get<Quizz[]>(`http://localhost:8080/etudiants/${student.id}/taken_quizzes`);
+    return this.http.get<Quizz[]>(`http://192.168.1.14:8080/etudiants/${student.id}/taken_quizzes`);
   }
   fetchScoring(quizzAttempt:QuizzAttempt):Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/quizzattempts/${quizzAttempt.id}/scoring`);
+    return this.http.get<any>(`http://192.168.1.14:8080/quizzattempts/${quizzAttempt.id}/scoring`);
   }
 
   joinQuizz(student:Student, token:number):Observable<any>{
-    return this.http.post<any>(`http://localhost:8080/quizzes/${student.id}/joinquizz/${token}`,null);
+    return this.http.post<any>(`http://192.168.1.14:8080/quizzes/${student.id}/joinquizz/${token}`,null);
   }
   quitQuizz(student:Student, quizz:Quizz):Observable<any>{
-    return this.http.post(`http://localhost:8080/quizzes/${student.id}/quitquizz/${quizz.id}`,null);
+    return this.http.post(`http://192.168.1.14:8080/quizzes/${student.id}/quitquizz/${quizz.id}`,null);
   }
   checkQuizzStarted(quizz:Quizz):Observable<boolean>{
     return interval(2500).pipe(
-      switchMap(() => this.http.get<boolean>(`http://localhost:8080/quizzes/is_started/${quizz.id}`)));
+      switchMap(() => this.http.get<boolean>(`http://192.168.1.14:8080/quizzes/is_started/${quizz.id}`)));
   }
   setAnswer(quizzAttemptId:number, questionId:number, choices: Choice[]):Observable<any>{
-    return this.http.post(`http://localhost:8080/quizzattempts/${quizzAttemptId}/setanswer/${questionId}`,choices)
+    return this.http.post(`http://192.168.1.14:8080/quizzattempts/${quizzAttemptId}/setanswer/${questionId}`,choices)
   }
   updateAnswer(quizzAttemptId:number, questionId:number, choices: Choice[]):Observable<any>{
     console.log("updating");
-    return this.http.put(`http://localhost:8080/quizzattempts/${quizzAttemptId}/updateanswer/${questionId}`,choices)
+    return this.http.put(`http://192.168.1.14:8080/quizzattempts/${quizzAttemptId}/updateanswer/${questionId}`,choices)
   }
   deleteAnswer(quizzAttemptId:number, questionId:number):Observable<any>{
     console.log("deleting");
     
-    return this.http.delete(`http://localhost:8080/quizzattempts/${quizzAttemptId}/deleteanswer/${questionId}`)
+    return this.http.delete(`http://192.168.1.14:8080/quizzattempts/${quizzAttemptId}/deleteanswer/${questionId}`)
   }
   reportCheatingAttempt(quizzAttemptId: number):Observable<any>{
-    return this.http.patch(`http://localhost:8080/quizzattempts/${quizzAttemptId}/report_cheating_attempt`,null)
+    return this.http.patch(`http://192.168.1.14:8080/quizzattempts/${quizzAttemptId}/report_cheating_attempt`,null)
   }
 }

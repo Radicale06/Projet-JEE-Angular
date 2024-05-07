@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Quizz } from '../models/quizz';
-import { StudentQuizzServiceService } from '../student-quizz-service.service';
-import { Student } from '../models/student';
-import { AuthServiceService } from '../auth-service.service';
+import { Quizz } from '../../models/quizz';
+import { StudentQuizzServiceService } from '../../student-quizz-service.service';
+import { Student } from '../../models/student';
+import { AuthServiceService } from '../../auth-service.service';
 import { Router } from '@angular/router';
 
 @Component({

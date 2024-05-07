@@ -8,8 +8,7 @@ export abstract class Utilisateur {
         private _username: string,
         private _gender: string,
         private _password: string,
-        private _etablissement: string,
-        private _rememberMeToken: string
+        private _etablissement: string
     ) {}
 
     get id(): number {
@@ -45,9 +44,6 @@ export abstract class Utilisateur {
         return this._etablissement;
     }
 
-    get rememberMeToken(): string {
-        return this._rememberMeToken;
-    }
 
     set id(id: number) {
         this._id = id;
@@ -81,7 +77,4 @@ export abstract class Utilisateur {
         this._etablissement = etablissement;
     }
 
-    set rememberMeToken(rememberMeToken: string) {
-        this._rememberMeToken = rememberMeToken;
-    }
 }

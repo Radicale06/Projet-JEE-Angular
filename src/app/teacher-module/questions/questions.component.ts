@@ -2,13 +2,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
 import { Router } from '@angular/router';
-import { Quizz } from '../models/quizz';
-import { Question } from '../models/question';
-import { Choice } from '../models/choice';
-import { AuthServiceService } from '../auth-service.service';
-import { Teacher } from '../models/teacher';
+import { Quizz } from '../../models/quizz';
+import { Question } from '../../models/question';
+import { Choice } from '../../models/choice';
+import { AuthServiceService } from '../../auth-service.service';
+import { Teacher } from '../../models/teacher';
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',

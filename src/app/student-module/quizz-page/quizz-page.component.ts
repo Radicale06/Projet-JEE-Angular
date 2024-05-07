@@ -1,15 +1,13 @@
-import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Route, Router } from '@angular/router';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
-import { QuizzAttempt } from '../models/quizz-attempt';
-import { Choice } from '../models/choice';
+import { QuizzAttempt } from '../../models/quizz-attempt';
+import { Choice } from '../../models/choice';
 import { Observable } from 'rxjs/internal/Observable';
 import { timer } from 'rxjs/internal/observable/timer';
 import { finalize, map, takeWhile } from 'rxjs';
-import { StudentQuizzServiceService } from '../student-quizz-service.service';
-import { Quizz } from '../models/quizz';
+import { StudentQuizzServiceService } from '../../student-quizz-service.service';
+import { Quizz } from '../../models/quizz';
 
 @Component({
   selector: 'app-quizz-page',
@@ -37,8 +35,7 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
   currentTime$?: Observable<Date>;
   answeredQuestions : Map<number, Choice[]> = new Map<number, Choice[]>()
   constructor(private http:HttpClient , private route:ActivatedRoute,
-     private studentQuizzService: StudentQuizzServiceService, private router:Router,
-    @Inject(DOCUMENT) private document: any) {
+     private studentQuizzService: StudentQuizzServiceService, private router:Router,) {
   }
   ngOnDestroy(): void {
     document.exitFullscreen();
@@ -96,7 +93,7 @@ export class QuizzPageComponent implements OnInit, OnDestroy {
     }
   }
   fetchQuestions(quizzId:number){
-    this.http.get(`http://localhost:8080/quizzes/${quizzId}/listquestions`).subscribe(
+    this.http.get(`http://192.168.1.14:8080/quizzes/${quizzId}/listquestions`).subscribe(
       response => {
         this.questions = response as any[]
         this.questions = this.questions.map((item) => {

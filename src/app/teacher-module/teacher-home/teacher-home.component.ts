@@ -1,14 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { list } from 'ngx-bootstrap-icons';
 import { ToastrService } from 'ngx-toastr';
-import { QuestionsComponent } from '../questions/questions.component';
 import { Router } from '@angular/router';
-import { TeacherQuizzServiceService } from '../teacher-quizz-service.service';
-import { Quizz } from '../models/quizz';
-import { AuthServiceService } from '../auth-service.service';
-import { Teacher } from '../models/teacher';
+import { TeacherQuizzServiceService } from '../../teacher-quizz-service.service';
+import { Quizz } from '../../models/quizz';
+import { AuthServiceService } from '../../auth-service.service';
+import { Teacher } from '../../models/teacher';
 
 @Component({
   selector: 'app-student-quizz',
@@ -19,7 +16,6 @@ export class TeacherHomeComponent implements OnInit{
   
   actualQuizzId : number = -1;
   displayCurrentQuizz(quizz:Quizz) {
-    const serializedQuizz = JSON.stringify(quizz);
     this.router.navigate(['/teacher/progress',quizz.id], {state : { quizz : quizz }});
     this.actualQuizzId = quizz.id;
   }
